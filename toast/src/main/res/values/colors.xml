@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="lightText">#406C80</color>
+    <color name="lightPrimary">#20A1DA</color>
+    <color name="lightWarning">#D99B21</color>
+    <color name="lightError">#D95757</color>
+    <color name="lightSuccess">#17996E</color>
+    <color name="sWhite">#FFFFFF</color>
+</resources>
