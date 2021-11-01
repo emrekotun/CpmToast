@@ -18,17 +18,15 @@ import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.DrawableCompat
 
-
 // Created by Emre KOTUN on 28.10.2021.
 class CpmToast {
     companion object {
-
-        const val LONG_DURATION = 5000L // 5 seconds
         const val TOAST_SUCCESS = "SUCCESS"
         const val TOAST_ERROR = "FAILED"
         const val TOAST_WARNING = "WARNING"
         const val TOAST_INFO = "INFO"
-        const val GRAVITY_TOP = 50
+        const val LONG_DURATION= 5000L
+        const val SHORT_DURATION= 2000L
 
         private lateinit var layoutInflater: LayoutInflater
 
@@ -38,12 +36,6 @@ class CpmToast {
         private var infoToastColor: Int = R.color.lightPrimary
         private var deleteToastColor: Int = R.color.lightPrimary
 
-        /*private var successBackgroundToastColor: Int = R.color.success_bg_color
-        private var errorBackgroundToastColor: Int = R.color.error_bg_color
-        private var warningBackgroundToastColor: Int = R.color.warning_bg_color
-        private var infoBackgroundToastColor: Int = R.color.info_bg_color
-        private var deleteBackgroundToastColor: Int = R.color.delete_bg_color*/
-
         @Suppress("unused")
         fun resetToastColors() {
             successToastColor = R.color.lightSuccess
@@ -51,60 +43,13 @@ class CpmToast {
             warningToastColor = R.color.lightWarning
             infoToastColor = R.color.lightPrimary
             deleteToastColor = R.color.lightPrimary
-
-            /*  successBackgroundToastColor = R.color.success_bg_color
-              errorBackgroundToastColor = R.color.error_bg_color
-              warningBackgroundToastColor = R.color.warning_bg_color
-              infoBackgroundToastColor = R.color.info_bg_color
-              deleteBackgroundToastColor = R.color.delete_bg_color*/
         }
-
-        fun setSuccessColor(color: Int) {
-            successToastColor = color
-        }
-
-        /* fun setSuccessBackgroundColor(color: Int) {
-             successBackgroundToastColor = color
-         }*/
-
-        fun setErrorColor(color: Int) {
-            errorToastColor = color
-        }
-
-        /*  fun setErrorBackgroundColor(color: Int) {
-              errorBackgroundToastColor = color
-          }*/
-
-        fun setWarningColor(color: Int) {
-            warningToastColor = color
-        }
-
-        /*  fun setWarningBackgroundColor(color: Int) {
-              warningBackgroundToastColor = color
-          }*/
-
-        fun setInfoColor(color: Int) {
-            infoToastColor = color
-        }
-
-        /*  fun setInfoBackgroundColor(color: Int) {
-              infoBackgroundToastColor = color
-          }*/
-
-        fun setDeleteColor(color: Int) {
-            deleteToastColor = color
-        }
-
-        /*fun setDeleteBackgroundColor(color: Int) {
-            deleteBackgroundToastColor = color
-        }*/
 
         // all color toast CTA
-        fun createColorToast(
+       private fun createColorToast(
             context: Activity,
             message: String,
             style: String,
-            position: Int,
             duration: Long
         ) {
             layoutInflater = LayoutInflater.from(context)
@@ -125,10 +70,6 @@ class CpmToast {
                         ContextCompat.getColor(context, successToastColor)
                     )
 
-                    // Pulse Animation for Icon
-                    /*val pulseAnimation = AnimationUtils.loadAnimation(context, R.anim.pulse)
-                    ivToast.startAnimation(pulseAnimation)*/
-
                     // round background color
                     setBackgroundAndFilter(
                         successToastColor,
@@ -145,7 +86,7 @@ class CpmToast {
                     startTimer(duration, toast)
 
                     // Setting Toast Gravity
-                    setGravity(position, toast)
+                    setGravity(toast)
 
                     // Setting layout to toast
                     @Suppress("DEPRECATION")
@@ -161,9 +102,6 @@ class CpmToast {
                         DrawableCompat.wrap(ivToast.drawable),
                         ContextCompat.getColor(context, errorToastColor)
                     )
-                    // Pulse Animation for Icon
-                    /* val pulseAnimation = AnimationUtils.loadAnimation(context, R.anim.pulse)
-                     ivToast.startAnimation(pulseAnimation)*/
 
                     // round background color
                     setBackgroundAndFilter(
@@ -180,7 +118,7 @@ class CpmToast {
                     startTimer(duration, toast)
 
                     // Setting Toast Gravity
-                    setGravity(position, toast)
+                    setGravity(toast)
 
                     // Setting layout to toast
                     toast.view = layout
@@ -195,9 +133,6 @@ class CpmToast {
                         DrawableCompat.wrap(ivToast.drawable),
                         ContextCompat.getColor(context, warningToastColor)
                     )
-                    // Pulse Animation for Icon
-                    /*val pulseAnimation = AnimationUtils.loadAnimation(context, R.anim.pulse)
-                    ivToast.startAnimation(pulseAnimation)*/
 
                     // round background color
                     setBackgroundAndFilter(
@@ -215,7 +150,7 @@ class CpmToast {
                     startTimer(duration, toast)
 
                     // Setting Toast Gravity
-                    setGravity(position, toast)
+                    setGravity(toast)
 
                     // Setting layout to toast
                     toast.view = layout
@@ -230,9 +165,6 @@ class CpmToast {
                         DrawableCompat.wrap(ivToast.drawable),
                         ContextCompat.getColor(context, infoToastColor)
                     )
-                    // Pulse Animation for Icon
-                    /*  val pulseAnimation = AnimationUtils.loadAnimation(context, R.anim.pulse)
-                      ivToast.startAnimation(pulseAnimation)*/
 
                     // round background color
                     setBackgroundAndFilter(
@@ -250,13 +182,48 @@ class CpmToast {
                     startTimer(duration, toast)
 
                     // Setting Toast Gravity
-                    setGravity(position, toast)
+                    setGravity(toast)
 
                     // Setting layout to toast
                     toast.view = layout
                     toast.show()
                 }
             }
+        }
+
+        fun Activity.toastSuccess(message: String,duration: Long= SHORT_DURATION) {
+            createColorToast(
+                this,
+                message,
+                TOAST_SUCCESS,
+                duration
+            )
+        }
+        fun Activity.toastError(message: String,duration: Long= SHORT_DURATION) {
+            createColorToast(
+                this,
+                message,
+                TOAST_ERROR,
+                duration
+            )
+        }
+
+        fun Activity.toastWarning(message: String,duration: Long= SHORT_DURATION) {
+            createColorToast(
+                this,
+                message,
+                TOAST_WARNING,
+                duration
+            )
+        }
+
+        fun Activity.toastInfo(message: String,duration: Long= SHORT_DURATION) {
+            createColorToast(
+                this,
+                message,
+                TOAST_INFO,
+                duration
+            )
         }
 
         private fun startTimer(duration: Long, toast: Toast) {
@@ -280,8 +247,8 @@ class CpmToast {
             layout.text = message
         }
 
-        private fun setGravity(position: Int, toast: Toast) {
-            toast.setGravity(position, 100, 100)
+        private fun setGravity(myToast: Toast) {
+            myToast.setGravity(50, 100, 100)
         }
 
         private fun setBackgroundAndFilter(

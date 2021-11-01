@@ -3,6 +3,7 @@ package com.emrekotun.cpmtoast
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.emrekotun.toast.CpmToast
+import com.emrekotun.toast.CpmToast.Companion.toastSuccess
 
 
 class MainActivity : AppCompatActivity() {
@@ -10,12 +11,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-     CpmToast.createColorToast(
-            this,
-            "Success !",
-            CpmToast.TOAST_SUCCESS,
-            CpmToast.GRAVITY_TOP,
-            CpmToast.LONG_DURATION
-        )
+       toastSuccess("Hello Word !",CpmToast.LONG_DURATION)
+
     }
 }
