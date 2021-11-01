@@ -1,7 +1,7 @@
 # CpmToast
+Perfect Toast Messages
 
-implementation
-build.gradle 
+Add this in your root build.gradle :
 ```
 allprojects {
 	repositories {
@@ -9,26 +9,28 @@ allprojects {
 		maven { url "https://jitpack.io" }
 	}
 }
-
 ```
+Add this to your module's build.gradle
 ```
 dependencies {
     implementation 'com.github.GrenderG:Toasty:1.5.2'
 }
-
 ```
 ![normal_tos](https://user-images.githubusercontent.com/22660204/139630691-63be6d16-091f-481d-a873-3f9c936cafd4.png)
+
+<b>Usage</b> <br/><br/>
+Success Toast
 ```
-// Success Toast
- CpmToast.createColorToast(
+CpmToast.createColorToast(
             this,
             "Success !",
             CpmToast.TOAST_SUCCESS,
             CpmToast.GRAVITY_TOP,
             CpmToast.LONG_DURATION
         )
-        
-// Error
+ ```  
+Error Toast
+ ```
  CpmToast.createColorToast(
             this,
             "Error !",
@@ -36,7 +38,9 @@ dependencies {
             CpmToast.GRAVITY_TOP,
             CpmToast.LONG_DURATION
         )
-// Warning
+ ```
+Warning Toast
+ ```
  CpmToast.createColorToast(
             this,
             "Warning !",
@@ -44,7 +48,9 @@ dependencies {
             CpmToast.GRAVITY_TOP,
             CpmToast.LONG_DURATION
         )
- // Info
+ ```
+Info Toast
+```
  CpmToast.createColorToast(
             this,
             "Info !",
