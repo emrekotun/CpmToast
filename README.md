@@ -4,20 +4,22 @@ implementation
 build.gradle 
 ```
 allprojects {
-		repositories {
-			...
-			maven { url 'https://jitpack.io' }
-		}
+	repositories {
+		...
+		maven { url "https://jitpack.io" }
 	}
-```
-```
- implementation 'com.github.emrekotun:CpmToast:v1.0.1'
-```
-
-![github_cover](https://user-images.githubusercontent.com/22660204/139278582-9a00616f-bb18-4732-a0ba-75b27220d668.png)
+}
 
 ```
-// Success
+```
+dependencies {
+    implementation 'com.github.GrenderG:Toasty:1.5.2'
+}
+
+```
+![normal_tos](https://user-images.githubusercontent.com/22660204/139630691-63be6d16-091f-481d-a873-3f9c936cafd4.png)
+```
+// Success Toast
  CpmToast.createColorToast(
             this,
             "Success !",
