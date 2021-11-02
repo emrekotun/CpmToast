@@ -25,8 +25,8 @@ class CpmToast {
         const val TOAST_ERROR = "FAILED"
         const val TOAST_WARNING = "WARNING"
         const val TOAST_INFO = "INFO"
-        const val LONG_DURATION= 5000L
-        const val SHORT_DURATION= 2000L
+        const val LONG_DURATION = 5000L
+        const val SHORT_DURATION = 2000L
 
         private lateinit var layoutInflater: LayoutInflater
 
@@ -34,19 +34,9 @@ class CpmToast {
         private var errorToastColor: Int = R.color.lightError
         private var warningToastColor: Int = R.color.lightWarning
         private var infoToastColor: Int = R.color.lightPrimary
-        private var deleteToastColor: Int = R.color.lightPrimary
 
-        @Suppress("unused")
-        fun resetToastColors() {
-            successToastColor = R.color.lightSuccess
-            errorToastColor = R.color.lightError
-            warningToastColor = R.color.lightWarning
-            infoToastColor = R.color.lightPrimary
-            deleteToastColor = R.color.lightPrimary
-        }
 
-        // all color toast CTA
-       private fun createColorToast(
+        private fun createColorToast(
             context: Activity,
             message: String,
             style: String,
@@ -89,11 +79,10 @@ class CpmToast {
                     setGravity(toast)
 
                     // Setting layout to toast
-                    @Suppress("DEPRECATION")
                     toast.view = layout
                     toast.show()
                 }
-                // CTA for Toast Error
+
                 TOAST_ERROR -> {
                     ivToast.setImageDrawable(
                         context.drawable(R.drawable.ic_close_bg_filled)
@@ -124,7 +113,7 @@ class CpmToast {
                     toast.view = layout
                     toast.show()
                 }
-                // CTA for Toast Warning
+
                 TOAST_WARNING -> {
                     ivToast.setImageDrawable(
                         context.drawable(R.drawable.ic_error_sign_filled)
@@ -156,7 +145,7 @@ class CpmToast {
                     toast.view = layout
                     toast.show()
                 }
-                // CTA for Toast Info
+
                 TOAST_INFO -> {
                     ivToast.setImageDrawable(
                         context.drawable(R.drawable.ic_info_sign_filled)
@@ -191,7 +180,7 @@ class CpmToast {
             }
         }
 
-        fun Activity.toastSuccess(message: String,duration: Long= SHORT_DURATION) {
+        fun Activity.toastSuccess(message: String, duration: Long = SHORT_DURATION) {
             createColorToast(
                 this,
                 message,
@@ -199,7 +188,8 @@ class CpmToast {
                 duration
             )
         }
-        fun Activity.toastError(message: String,duration: Long= SHORT_DURATION) {
+
+        fun Activity.toastError(message: String, duration: Long = SHORT_DURATION) {
             createColorToast(
                 this,
                 message,
@@ -208,7 +198,7 @@ class CpmToast {
             )
         }
 
-        fun Activity.toastWarning(message: String,duration: Long= SHORT_DURATION) {
+        fun Activity.toastWarning(message: String, duration: Long = SHORT_DURATION) {
             createColorToast(
                 this,
                 message,
@@ -217,7 +207,7 @@ class CpmToast {
             )
         }
 
-        fun Activity.toastInfo(message: String,duration: Long= SHORT_DURATION) {
+        fun Activity.toastInfo(message: String, duration: Long = SHORT_DURATION) {
             createColorToast(
                 this,
                 message,
