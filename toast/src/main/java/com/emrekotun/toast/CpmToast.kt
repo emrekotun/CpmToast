@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package com.emrekotun.toast
 
 import android.app.Activity
@@ -21,21 +23,17 @@ import androidx.core.graphics.drawable.DrawableCompat
 // Created by Emre KOTUN on 28.10.2021.
 class CpmToast {
     companion object {
-        const val TOAST_SUCCESS = "SUCCESS"
-        const val TOAST_ERROR = "FAILED"
-        const val TOAST_WARNING = "WARNING"
-        const val TOAST_INFO = "INFO"
         const val LONG_DURATION = 5000L
         const val SHORT_DURATION = 2000L
-
+        const val TOAST_ERROR = "FAILED"
+        const val TOAST_INFO = "INFO"
+        const val TOAST_SUCCESS = "SUCCESS"
+        const val TOAST_WARNING = "WARNING"
         private lateinit var layoutInflater: LayoutInflater
-
-        private var successToastColor: Int = R.color.lightSuccess
         private var errorToastColor: Int = R.color.lightError
-        private var warningToastColor: Int = R.color.lightWarning
         private var infoToastColor: Int = R.color.lightPrimary
-
-
+        private var successToastColor: Int = R.color.lightSuccess
+        private var warningToastColor: Int = R.color.lightWarning
         private fun createColorToast(
             context: Activity,
             message: String,
@@ -52,127 +50,65 @@ class CpmToast {
             when (style) {
                 // Function for Toast Success
                 TOAST_SUCCESS -> {
-                    ivToast.setImageDrawable(
-                        context.drawable(R.drawable.ic_check_bg_filled)
-                    )
-                    DrawableCompat.setTint(
-                        DrawableCompat.wrap(ivToast.drawable),
-                        ContextCompat.getColor(context, successToastColor)
-                    )
-
+                    ivToast.setImageDrawable(context.drawable(R.drawable.ic_check_bg_filled))
+                    DrawableCompat.setTint(DrawableCompat.wrap(ivToast.drawable), ContextCompat.getColor(context, successToastColor))
                     // round background color
-                    setBackgroundAndFilter(
-                        successToastColor,
-                        layout,
-                        context
-                    )
-
+                    setBackgroundAndFilter(successToastColor, layout, context)
                     // Setting up the color for title & Message text
-
                     setDescriptionDetails(message, tvToastMsg)
-
                     // init toast
                     val toast = Toast(context.applicationContext)
                     startTimer(duration, toast)
-
                     // Setting Toast Gravity
                     setGravity(toast)
-
                     // Setting layout to toast
                     toast.view = layout
                     toast.show()
                 }
-
                 TOAST_ERROR -> {
-                    ivToast.setImageDrawable(
-                        context.drawable(R.drawable.ic_close_bg_filled)
-                    )
-                    DrawableCompat.setTint(
-                        DrawableCompat.wrap(ivToast.drawable),
-                        ContextCompat.getColor(context, errorToastColor)
-                    )
-
+                    ivToast.setImageDrawable(context.drawable(R.drawable.ic_close_bg_filled))
+                    DrawableCompat.setTint(DrawableCompat.wrap(ivToast.drawable), ContextCompat.getColor(context, errorToastColor))
                     // round background color
-                    setBackgroundAndFilter(
-                        errorToastColor,
-                        layout,
-                        context
-                    )
-
+                    setBackgroundAndFilter(errorToastColor, layout, context)
                     // Setting up the color for title & Message text
                     setDescriptionDetails(message, tvToastMsg)
-
                     // init toast
                     val toast = Toast(context.applicationContext)
                     startTimer(duration, toast)
-
                     // Setting Toast Gravity
                     setGravity(toast)
-
                     // Setting layout to toast
                     toast.view = layout
                     toast.show()
                 }
-
                 TOAST_WARNING -> {
-                    ivToast.setImageDrawable(
-                        context.drawable(R.drawable.ic_error_sign_filled)
-                    )
-                    DrawableCompat.setTint(
-                        DrawableCompat.wrap(ivToast.drawable),
-                        ContextCompat.getColor(context, warningToastColor)
-                    )
-
+                    ivToast.setImageDrawable(context.drawable(R.drawable.ic_error_sign_filled))
+                    DrawableCompat.setTint(DrawableCompat.wrap(ivToast.drawable), ContextCompat.getColor(context, warningToastColor))
                     // round background color
-                    setBackgroundAndFilter(
-                        warningToastColor,
-                        layout,
-                        context
-                    )
-
+                    setBackgroundAndFilter(warningToastColor, layout, context)
                     // Setting up the color for title & Message text
-
                     setDescriptionDetails(message, tvToastMsg)
-
                     // init toast
                     val toast = Toast(context.applicationContext)
                     startTimer(duration, toast)
-
                     // Setting Toast Gravity
                     setGravity(toast)
-
                     // Setting layout to toast
                     toast.view = layout
                     toast.show()
                 }
-
                 TOAST_INFO -> {
-                    ivToast.setImageDrawable(
-                        context.drawable(R.drawable.ic_info_sign_filled)
-                    )
-                    DrawableCompat.setTint(
-                        DrawableCompat.wrap(ivToast.drawable),
-                        ContextCompat.getColor(context, infoToastColor)
-                    )
-
+                    ivToast.setImageDrawable(context.drawable(R.drawable.ic_info_sign_filled))
+                    DrawableCompat.setTint(DrawableCompat.wrap(ivToast.drawable), ContextCompat.getColor(context, infoToastColor))
                     // round background color
-                    setBackgroundAndFilter(
-                        infoToastColor,
-                        layout,
-                        context
-                    )
-
+                    setBackgroundAndFilter(infoToastColor, layout, context)
                     // Setting up the color for title & Message text
-
                     setDescriptionDetails(message, tvToastMsg)
-
                     // init toast
                     val toast = Toast(context.applicationContext)
                     startTimer(duration, toast)
-
                     // Setting Toast Gravity
                     setGravity(toast)
-
                     // Setting layout to toast
                     toast.view = layout
                     toast.show()
